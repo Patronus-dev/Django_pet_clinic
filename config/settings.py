@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     # my apps
     'pages',
     'blog',
-    'language'
+    'language',
+
 ]
 
 MIDDLEWARE = [
@@ -114,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fa'
 
 LOCALE_PATHS = (
     'templates/locale',
@@ -122,7 +123,6 @@ LOCALE_PATHS = (
 
 LANGUAGES = (
     ('en', 'English'),
-    ('de', 'Deutsch'),
     ('fa', 'Persian'),
 )
 

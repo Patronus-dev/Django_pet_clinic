@@ -222,9 +222,21 @@ button::-moz-focus-inner {
   .mfp-iframe-holder .mfp-content {
     line-height: 0;
     width: 100%;
-    max-width: 900px; }
-  .mfp-iframe-holder .mfp-close {
-    top: -40px; }
+    max-width: 900px; 
+    border: 5px dashed rgba(0, 0, 0, 0.70);  
+}
+
+.mfp-iframe-holder .mfp-close {
+    top: -45px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.70);
+    border-radius: 0%;
+    padding: 0;
+    text-align: center;
+    right: -5px;
+    line-height: 38px;
+}
 
 .mfp-iframe-scaler {
   width: 100%;

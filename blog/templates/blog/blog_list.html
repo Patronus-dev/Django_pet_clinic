@@ -4,77 +4,82 @@
 
 {% block page_title %}{% trans 'Blog' %}{% endblock page_title %}
 
-{% block navbar %}
-
-    <!-- START NAVBAR -->
-    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-custom navbar-light sticky">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img style="width: 25%;" src="{% static 'img/logo/Patronus-logo-dark-nav-removebg.png' %}" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="mdi mdi-menu"></span>
-            </button>
-            <!--END BUTTON-->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul id="navbar-navlist" class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">{% trans 'Home' %}</a></li>
-                </ul><!--END NAVBAR NAV-->
-            </div><!--END COLLAPSE-->
-        </div><!--END CONTAINER -->
-    </nav>
-    <!-- END NAVBAR-->
-
-{% endblock navbar %}
 
 {% block content %}
 
-    <!-- START  HOME DESIGN -->
-    <section class="section-top">
+    <!--Start breadcrumb area-->
+    <section class="breadcrumb-area" style="background-image: url({% static 'images/breadcrumb/breadcrumb-1.png' %});">
+        <div class="banner-curve"></div>
         <div class="container">
-            <div class="offset-lg-1 col-lg-10 col-xs-12 text-center">
-                <div class="section-top-title">
-                    <h1>{% trans 'Blogs' %}</h1>
-                </div><!-- //.HERO-TEXT -->
-            </div><!--- END COL -->
-        </div><!--- END CONTAINER -->
-    </section>
-    <!-- END  HOME DESIGN -->
-
-    <!-- START PORTFOLIO SINGLE PROJECT -->
-    {% for blog in blogs %}
-
-        <section class="single_project_area section-padding">
-        <div class="container">
-        <div class="row project_dec">
-            <div class="col-lg-6 col-sm-12 col-xs-12">
-                <div class="media-left">
-                    <img style="width: 50%" src="{{ blog.image.url }}" class="img-fluid" alt="portfolio-image"/>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="inner-content clearfix text-center">
+                        <div class="title wow slideInUp animated" data-wow-delay="0.3s" data-wow-duration="1500ms">
+                            <h2>{% trans 'Blogs list' %}<span class="dotted"></span></h2>
+                        </div>
+                        <div class="breadcrumb-menu wow slideInDown animated" data-wow-delay="0.3s"
+                             data-wow-duration="1500ms">
+                            <ul class="clearfix">
+                                <li><a href="{% url 'home' %}">{% trans 'Home' %}</a></li>
+                                <li class="active">{% trans 'Blog' %}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12 col-xs-12">
-                <div class="project_details">
-                    <div class="about_project">
-                        <h4>{{ blog.title }}</h4>
-                    </div>
-                    <div class="about_project_details">
-                        <ul>
-                            <li><i class="fa fa-user"></i><b>{% trans 'Author' %} : </b>{{ blog.author }}</li>
-                            <li><i class="fa fa-user"></i><b>{% trans 'Source' %} : </b>{{ blog.source }}</li>
-                            <li><i class="fa fa-clock-o"></i><b>{% trans 'Date' %} : </b>{{ blog.datetime_created }}
-                            </li>
-                        </ul>
-                    </div>
-                    <a class="sp_btn" href="{% url 'blog_detail' blog.id %}">{% trans 'Continue Reading' %}</a>
-                </div>
-            </div><!--- END COL -->
         </div>
+    </section>
+    <!--End breadcrumb area-->
 
-    {% endfor %}
-<!--- END ROW -->
-</div>
-<!--- END CONTAINER -->
-</section>
-    <!-- END PORTFOLIO SINGLE PROJECT -->
+    <!--Start Blog Style2 Area-->
+    <section id="blog-area" class="blog-grid-area">
+        <div class="container">
+            <div class="row">
+                <!--Start Single blog Style-->
+                {% for blog in blogs %}
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="single-blog-style1 wow fadeInLeft" data-wow-delay="100ms"
+                             data-wow-duration="1500ms">
+                            <div class="img-holder">
+                                <div class="date-box"><h5>{{ blog.datetime_created }}</h5></div>
+                                <div class="inner">
+                                    <img src="{{ blog.image.url }}" alt="Awesome Image">
+                                </div>
+                            </div>
+                            <div class="text-holder">
+                                <h3 class="blog-title">
+                                    <a href="blog-single.html">{{ blog.title }}<span class="round-box zoominout"></span>
+                                </a>
+                                </h3>
+
+                                <ul class="meta-info">
+                                    <li><span class="icon-user"></span><a href="#">{{ blog.author }}</a></li>
+                                    <li><span class="icon-tag"></span><a href="#">{{ blog.source }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <!--End Single blog Style-->
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <ul class="styled-pagination gray clearfix text-center">
+                        <li class="prev"><a href="#"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a></li>
+                        <li><a href="#">1</a></li>
+                        <li class="active"><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li class="dotted"><a href="#"><span>...</span></a></li>
+                        <li><a href="#">10</a></li>
+                        <li class="next"><a href="#"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!--End Blog Style2 Area-->
 
 {% endblock content %}

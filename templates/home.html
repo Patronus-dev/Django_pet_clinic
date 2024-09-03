@@ -1,409 +1,599 @@
 {% extends '_base.html' %}
+{% load i18n %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% load i18n %}
 
 {% block page_title %}{% trans 'Home' %}{% endblock page_title %}
 
-{% block navbar %}
-
-    <!-- START NAVBAR -->
-    <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-custom navbar-light sticky">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img style="width: 25%;" src="{% static 'img/logo/Patronus-logo-dark-nav-removebg.png' %}" alt=""></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="mdi mdi-menu"></span>
-            </button>
-
-            <!--END BUTTON-->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-
-                <!--START LANGUAGES SWITCHER-->
-                <div class="language-switcher">
-                    <a href="{% url 'set_language' %}?language=en"
-                       class="lang-btn {% if request.LANGUAGE_CODE == 'en' %}active{% endif %}">English</a> |
-                    <a href="{% url 'set_language' %}?language=de"
-                       class="lang-btn {% if request.LANGUAGE_CODE == 'de' %}active{% endif %}">Deutsch</a> |
-                    <a href="{% url 'set_language' %}?language=fa"
-                       class="lang-btn {% if request.LANGUAGE_CODE == 'fa' %}active{% endif %}">فارسی</a>
-                </div>
-                <!--END LANGUAGES SWITCHER-->
-
-                <ul id="navbar-navlist" class="navbar-nav ms-auto">
-                    <li  class="nav-item"><a class="nav-link active" href="{% url 'home' %}">{% trans 'Home' %}</a></li>
-                    <li style="width: 6rem" class="nav-item"><a class="nav-link" href="#about">{% trans 'About' %}</a></li>
-                    <li  class="nav-item"><a class="nav-link" href="#service">{% trans 'Services' %}</a></li>
-                    <li  class="nav-item"><a class="nav-link" href="#resume">{% trans 'Resume' %}</a></li>
-                    <li  class="nav-item"><a class="nav-link" href="#blog">{% trans 'Blog' %}</a></li>
-                </ul>
-                <!--END NAVBAR NAV-->
-            </div>
-            <!--END COLLAPSE-->
-        </div>
-        <!--END CONTAINER -->
-    </nav>
-    <!-- END NAVBAR-->
-
-{% endblock navbar %}
 
 {% block content %}
 
-    <!-- START HOME -->
-    <section data-stellar-background-ratio="0.3" id="home" class="home_bg"
-             style="background-image: url({% static 'img/home/home-wallpaper.jpg' %});  background-size:cover; background-position: center center;">
-        <div id="particles-js"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-sm-12 col-xs-12">
-                    <div class="about_me_content">
-                        <span> - {% trans 'I Am MEHDI' %}</span>
-                        <h1 class="typewrite" data-period="2000"
-                            data-type='[ "{% trans 'WEB DEVELOPER' %}", "{% trans 'FREELANCER' %}", "{% trans 'BACKEND' %}"]'>
-                            <span class="wrap"></span></h1>
-                    </div>
-                    <div class="basic-info">
-                        <div class="single-basic-info" style="margin-right: 5%">
-                            <p>{% trans 'Email' %} : <br/><span>mehdii.dev@gmail.com</span></p>
-                        </div>
-                        <div class="single-basic-info">
-                            <p>{% trans 'Phone' %} : <br/><span>+98 910 193 4120</span></p>
-                        </div>
-                        <div class="single-basic-info">
-                            <p>{% trans 'Address' %} : <br/><span>{% trans 'Tehran' %}</span></p>
-                        </div>
-                        <div class="single-basic-info">
-                            <p>{% trans 'Nationality' %} : <br/><span>{% trans 'Persian' %}</span></p>
-                        </div>
-                    </div>
-                </div><!-- END COL-->
-            </div><!--- END ROW -->
-        </div><!--- END CONTAINER -->
-    </section>
-    <!-- END  HOME -->
 
-    <!-- START ABOUT -->
-    <section id="about" class="about_area section-padding">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1>{% trans 'Profile' %}</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s"
-                     data-wow-offset="0">
-                    <div class="about_img">
-                        <img src="{% static 'img/intro/me.jpg' %}" class="img-fluid" alt="profile-picture"/>
+
+<!-- Start Main Slider -->
+<section class="main-slider style1">
+    <div class="slider-box">
+        <!-- Banner Carousel -->
+        <div class="banner-carousel owl-theme owl-carousel text-right">
+            <!-- Slide -->
+            <div class="slide">
+                <div class="image-layer" style="background-image:url(assets/images/slides/slide-v1-1.jpg)"></div>
+                <div class="auto-container">
+                    <div class="content">
+                        <h5>//<span>Enjoy Your Holiday</span>//</h5>
+                        <h2>We Keep Them<br> Happy Anytime<span class="round"></span></h2>
+                        <div class="btns-box">
+                            <a class="btn-one" href="#"><span class="txt">Make Appointment</span></a>
+                            <a class="btn-one marleft style2" href="#"><span class="txt">987-876-876-87</span></a>
+                        </div>
                     </div>
                 </div>
-                <!-- / END COL -->
-                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"
-                     data-wow-offset="0">
-                    <div class="about_info">
-                        <h4>{% trans 'Intro' %}</h4>
-                        <h3>{% trans 'Hi, my name is Mehdi Sabz.' %}</h3>
-                        <p>
-                            <strong>
-                                {% trans 'The person who build and develops websites. I am a programmer and web developer who enjoys a wide range of hobbies, such as building web applications and coding. For me, it is more like a hobby than a job.' %}
-                            </strong>
-                        </p>
-                        <p>
-                            <strong>
-                                {% trans 'I can turn Caffeine into complex programs. So either Coffee is a magic potion or I am a wizard !' %}
-                                😉
-                            </strong>
-                        </p>
-                        <p>
-                            {% trans 'Django is a powerful and secure web framework for developing websites and web applications. This framework provides advanced tools and security features, enabling developers to create high-performance applications resistant to cyber attacks. With its "batteries included"  philosophy, Django meets all web development needs in a comprehensive package.' %}
-                        </p>
-                    </div>
-                    <div class="skills_info">
-                        <h4>{% trans 'Skills' %}</h4>
-                        <div class="progress-bar-linear">
-                            <p class="progress-bar-text">{% trans 'Python' %}
-                                <span>65%</span>
-                            </p>
-                            <div class="progress-bar">
-                                <span data-percent="65"></span>
-                            </div>
-                        </div>
-                        <div class="progress-bar-linear">
-                            <p class="progress-bar-text">{% trans 'Django' %}
-                                <span>60%</span>
-                            </p>
-                            <div class="progress-bar">
-                                <span data-percent="60"></span>
-                            </div>
-                        </div>
-                        <div class="progress-bar-linear">
-                            <p class="progress-bar-text">{% trans 'Web Design' %}
-                                <span>70%</span>
-                            </p>
-                            <div class="progress-bar">
-                                <span data-percent="70"></span>
-                            </div>
-                        </div>
-                        <div class="progress-bar-linear">
-                            <p class="progress-bar-text">{% trans 'HTML & CSS' %}
-                                <span>45%</span>
-                            </p>
-                            <div class="progress-bar">
-                                <span data-percent="45"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- / END COL -->
-            </div><!-- / END ROW -->
-        </div><!-- END CONTAINER  -->
-    </section>
-    <!-- END ABOUT -->
-
-    <!-- START SERVICE -->
-    <section id="service" class="service_area section-padding">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1>{% trans "What I'm Doing" %}</h1>
-                <p>{% trans 'I am a web developer with Python and Django.' %}</p>
             </div>
-            <div class="row text-center">
-                <div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.1s" data-wow-offset="0">
-                    <div class="serviceBox sbbr">
-                        <div class="service-icon"><span class="ti-cup"></span></div>
-                        <h3 class="title">{% trans 'Web Design' %}</h3>
-                        <p class="description">{% trans 'Design responsive,user-friendly websites with modern aesthetics,also provides an intuitive user experience.' %}</p>
+            <!-- Slide -->
+            <div class="slide">
+                <div class="image-layer" style="background-image:url(assets/images/slides/slide-v1-2.jpg)"></div>
+                <div class="auto-container">
+                    <div class="content">
+                        <h5>//<span>Enjoy Your Holiday</span>//</h5>
+                        <h2>We Keep Them<br> Happy Anytime<span class="round"></span></h2>
+                        <div class="btns-box">
+                            <a class="btn-one" href="#"><span class="txt">Make Appointment</span></a>
+                            <a class="btn-one marleft style2" href="#"><span class="txt">987-876-876-87</span></a>
+                        </div>
                     </div>
-                </div><!-- END COL -->
-                <div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.2s" data-wow-offset="0">
-                    <div class="serviceBox sbbr">
-                        <div class="service-icon"><span class="ti-medall-alt"></span></div>
-                        <h3 class="title">{% trans 'Development' %}</h3>
-                        <p class="description">{% trans 'Create secure and scalable web applications using Python and Django,emphasizing high performance and reliability.' %}</p>
-                    </div>
-                </div><!-- END COL -->
-                <div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.3s" data-wow-offset="0">
-                    <div class="serviceBox sbbr sbbrnone">
-                        <div class="service-icon"><span class="ti-image"></span></div>
-                        <h3 class="title">{% trans 'Social Media' %}</h3>
-                        <p class="description">{% trans "In today's world, presence on social networks as well as website has a great impact on your business and introduction to customers." %}</p>
-                    </div>
-                </div><!-- END COL -->
-                <div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.4s" data-wow-offset="0">
-                    <div class="serviceBox">
-                        <div class="service-icon"><span class="ti-crown"></span></div>
-                        <h3 class="title">{% trans 'Branding' %}</h3>
-                        <p class="description">{% trans 'Having a website significantly increases the visibility and credibility of the business and provides a digital storefront to the audience.' %}</p>
-                    </div>
-                </div><!-- END COL -->
-                <div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.5s" data-wow-offset="0">
-                    <div class="serviceBox sblr">
-                        <div class="service-icon"><span class="ti-key"></span></div>
-                        <h3 class="title">{% trans 'Strategy' %}</h3>
-                        <p class="description">{% trans 'Focus on increasing brand awareness, creating customer engagement, and achieving business goals.' %}</p>
-                    </div>
-                </div><!-- END COL -->
-                <div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.6s" data-wow-offset="0">
-                    <div class="serviceBox">
-                        <div class="service-icon"><span class="ti-hand-open"></span></div>
-                        <h3 class="title">{% trans 'Consulting' %}</h3>
-                        <p class="description">{% trans 'Tailored solutions to enhance online presence, improve user experience,and achieve business goals effectively.' %}</p>
-                    </div>
-                </div><!-- END COL -->
-            </div><!-- END ROW -->
-        </div><!-- END CONTAINER -->
-    </section>
-    <!-- END SERVICE -->
-
-    <!-- START FUNFACT -->
-    <section data-stellar-background-ratio="0.3" id="funfact" class="funfact_area counter_feature section-padding"
-             style="background-image: url({% static 'img/program-development.jpg' %});  background-size:cover; background-position: center center;">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.1s" data-wow-offset="0">
-                    <div class="sp sp-one">
-                        <h2 class="counter-num">2</h2>
-                        <h3>{% trans 'Programming Languages' %}</h3>
-                    </div>
-                </div><!-- END COL-->
-                <div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.2s" data-wow-offset="0">
-                    <div class="sp sp-two">
-                        <h2 class="counter-num">5</h2>
-                        <h3>{% trans 'Successful Project' %}</h3>
-                    </div>
-                </div><!-- END COL -->
-                <div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.3s" data-wow-offset="0">
-                    <div class="sp sp-three">
-                        <h2 class="counter-num">6</h2>
-                        <h3>{% trans 'Certificates and Documents' %}</h3>
-                    </div>
-                </div><!-- END COL -->
-                <div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s"
-                     data-wow-delay="0.4s" data-wow-offset="0">
-                    <div class="sp sp-four">
-                        <h2 class="counter-num">8</h2>
-                        <h3>{% trans 'Workshops and Training' %}</h3>
-                    </div>
-                </div><!-- END COL -->
-            </div><!-- END ROW  -->
-        </div><!-- END CONTAINER  -->
-    </section>
-    <!-- END FUNFACT -->
-
-    <!-- START RESUME -->
-    <section id="resume" class="resume_area section-padding">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1>{% trans 'Resume ' %}</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s"
-                     data-wow-offset="0">
-                    <h4 class="timeline_title">{% trans 'Education' %}</h4>
-                    <div class="single_timeline">
-                        <h4>{% trans 'Degrees' %}</h4>
-                        <span class="active_year">2014</span>
-                        <span class="active_company">- {% trans 'Mathematics and physics Diploma.' %}</span>
-                        <br>
-                        <span class="active_year">2024</span>
-                        <span class="active_company">- {% trans 'Computer Science Diploma.' %}</span>
-                    </div>
-                    <div class="single_timeline">
-                        <h4 class="timeline_title">{% trans 'Programming Courses' %}</h4>
-                        <span class="active_year">2021</span>
-                        <span class="active_company">- {% trans 'HTML & CSS certificate.' %}</span>
-                        <p>{% trans 'From' %} <a href="https://cando.ac/" target="_blank" style="color: #F0BB62;">
-                            {% trans 'Cando' %}</a>
-                            {% trans ' Computer Science Engineering institution.' %}
-                        </p><br>
-                        <span class="active_year">2022</span>
-                        <span class="active_company">- {% trans 'Python Foundation Master certificate.' %}</span>
-                        <p>{% trans 'From' %}<a href="https://cando.ac/" target="_blank" style="color: #F0BB62;">
-                            {% trans 'Cando' %}</a>
-                            {% trans 'Computer Science Engineering institution.' %}</p><br>
-                        <span class="active_year">2022</span>
-                        <span class="active_company">- {% trans 'Python Advanced Master certificate.' %}</span>
-                        <p>{% trans 'From' %} <a href="https://cando.ac/" target="_blank" style="color: #F0BB62;">
-                            {% trans 'Cando' %}</a>
-                            {% trans 'Computer Science Engineering institution.' %}</p><br>
-                        <span class="active_year">2023</span>
-                        <span class="active_company">- {% trans 'Django certificate.' %}</span>
-                        <p>{% trans 'From' %} <a href="https://cando.ac/" target="_blank" style="color: #F0BB62;">
-                            {% trans 'Cando' %}</a>
-                            {% trans 'Computer Science Engineering institution.' %}</p><br>
-                    </div>
-                </div><!--END COL -->
-                <div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s"
-                     data-wow-offset="0">
-                    <h4 class="timeline_title">{% trans 'About me' %}</h4>
-                    <div class="single_timeline">
-                        <h4>{% trans 'Languages' %}</h4>
-                        <span class="active_company">{% trans 'Persian ' %}</span><br>
-                        <img class="flag-icons" src="{% static 'img/icons/Azerbaijan.png' %}" alt="">
-                        <span class="active_company">{% trans 'Turkish (Azerbaijan)' %}</span>
-                        <br>
-                        <img class="flag-icons" src="{% static 'img/icons/Germany.png' %}" alt="">
-                        <span class="active_company">{% trans 'Deutsch' %} (B1)</span>
-                        <br>
-                        <img class="flag-icons" src="{% static 'img/icons/English.png' %}" alt="">
-                        <span class="active_company">{% trans 'English' %} (Intermediate)</span>
-                        <br>
-                    </div>
-                    <div class="single_timeline">
-                        <h4>{% trans 'Hobbies' %}</h4>
-                        <span class="active_company">- {% trans 'Traveling' %}</span><br>
-                        <span class="active_company">- {% trans 'Gaming' %}</span><br>
-                        <span class="active_company">- {% trans 'Meeting Family & Friends' %}</span><br>
-                        <span class="active_company">- {% trans 'Music' %}</span><br>
-                        <span class="active_company">- {% trans 'Pets' %}</span><br>
-                    </div>
-                    <div class="single_timeline single_timeline_mbnone">
-                        <h4 class="timeline_title">{% trans "Other Skills" %}</h4>
-                        <span class="active_year">{% trans "2019 to Present" %}</span>
-                        <span class="active_company">- {% trans "Accountant" %}</span>
-                        <p>{% trans "Working as an accountant in a private company." %}</p>
-                    </div>
-
-                </div><!--END COL -->
-            </div><!-- / END ROW -->
-        </div><!-- END CONTAINER  -->
-    </section>
-    <!-- END RESUME -->
-
-    <!-- START BLOG -->
-    {% if all_blogs %}
-        <section id="blog" class="blog_area section-padding">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h1>{% trans "Latest blogs" %}</h1>
                 </div>
-                <div class="row">
-                    {% for blog in latest_blogs %}
-                        <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s"
-                             data-wow-delay="0.1s"
-                             data-wow-offset="0">
-                            <div class="single_blog">
-                                <div class="blog-img">
-                                    <img src="{{ blog.image.url }}" class="img-fluid" alt="image"/>
-                                    <a href="{% url 'blog_detail' blog.id %}">{{ blog.datetime_created }}</a>
-                                </div>
-                                <div class="blog_content">
-                                    <h2><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
-                                    </h2>
-                                    <p>{{ blog.text|safe|truncatewords:13 }}</p>
-                                    <a href="{% url 'blog_detail' blog.id %}">{% trans "Continue Reading" %}</a>
-                                </div>
+            </div>
+            <!-- Slide -->
+            <div class="slide">
+                <div class="image-layer" style="background-image:url(assets/images/slides/slide-v1-3.jpg)"></div>
+                <div class="auto-container">
+                    <div class="content">
+                        <h5>//<span>Enjoy Your Holiday</span>//</h5>
+                        <h2>We Keep Them<br> Happy Anytime<span class="round"></span></h2>
+                        <div class="btns-box">
+                            <a class="btn-one" href="#"><span class="txt">Make Appointment</span></a>
+                            <a class="btn-one marleft style2" href="#"><span class="txt">987-876-876-87</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- End Main Slider paroller -->
+
+<!--Start Featured Area-->
+<section dir="rtl" class="featured-area rtl text-right">
+    <div class="container">
+        <div class="row">
+            <!--Start Single Featured Box-->
+            <div class="col-xl-4">
+                <div class="single-featured-box">
+                    <div class="inner">
+                        <div class="icon">
+                            <span class="icon-dog"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Dog Boarding</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Featured Box-->
+            <!--Start Single Featured Box-->
+            <div class="col-xl-4">
+                <div class="single-featured-box">
+                    <div class="inner">
+                        <div class="icon">
+                            <span class="icon-dog-food clr2"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Dog Boarding</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Featured Box-->
+            <!--Start Single Featured Box-->
+            <div class="col-xl-4">
+                <div class="single-featured-box">
+                    <div class="inner">
+                        <div class="icon">
+                            <span class="icon-pet-bowl clr3"></span>
+                        </div>
+                        <div class="text">
+                            <h3>Pet Adoption</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Featured Box-->
+        </div>
+    </div>
+</section>
+<!--End Featured Area-->
+
+<!--Start About Style1 Area-->
+<section dir="rtl" class="about-style1-area rtl">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-7">
+                <div class="about-style1-image-box text-right">
+                    <div class="about-style1-image-box-bg" style="background-image: url(assets/images/shape/about-style1-image-box-bg.png)"></div>
+                    <div class="main-image">
+                        <img src="assets/images/about/about-1.png" alt="Awesome Image">
+                    </div>
+                    <div class="about-experience-box">
+                        <div class="count-box">
+                            <h2>
+                                <span class="timer" data-from="1" data-to="20" data-speed="5000" data-refresh-interval="50">1020</span>
+                                <span class="icon-plus plus-icon"></span>
+                            </h2>
+                            <h5>Years Experience</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-5">
+                <div class="about-style1-content-box text-right">
+                    <div class="sec-title">
+                        <h5>//<span>About Us</span>//</h5>
+                        <h2>Best Agency For<br> Your Pet<span class="round-box zoominout"></span></h2>
+                    </div>
+                    <div class="inner-content">
+                        <div class="text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-tick"></span>
+                                        </div>
+                                        <div class="title">
+                                            <h5>Certified Groomer</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-6">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-tick"></span>
+                                        </div>
+                                        <div class="title">
+                                            <h5>Animal Lover</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-6">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-tick"></span>
+                                        </div>
+                                        <div class="title">
+                                            <h5>14+ Years Experience</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-6">
+                                <ul>
+                                    <li>
+                                        <div class="icon">
+                                            <span class="icon-tick"></span>
+                                        </div>
+                                        <div class="title">
+                                            <h5>Pet Parent Of 3 Dogs</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--End About Style1 Area-->
+
+<!-- Start Service Style1 Area -->
+<section dir="rtl" class="service-style1-area rtl">
+    <div class="shape1">
+        <img src="assets/images/shape/shape-1.png" alt="">
+    </div>
+    <div class="shape2">
+        <img src="assets/images/shape/shape-2.png" alt="">
+    </div>
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="icon">
+                <i class="icon-bone"></i>
+            </div>
+            <h2>What We Do<span class="round-box zoominout"></span></h2>
+        </div>
+        <div class="row text-right">
+            <!--Start Single Service Style1-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="single-service-style1">
+                    <div class="img-holder">
+                        <div class="inner">
+                            <img src="assets/images/services/service-v1-1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <h3><a href="#">Pet Grooming</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. </p>
+                        <div class="button">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Service Style1-->
+            <!--Start Single Service Style1-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                <div class="single-service-style1">
+                    <div class="img-holder">
+                        <div class="inner">
+                            <img src="assets/images/services/service-v1-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <h3><a href="#">Dog Setting</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. </p>
+                        <div class="button">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Service Style1-->
+            <!--Start Single Service Style1-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="single-service-style1">
+                    <div class="img-holder">
+                        <div class="inner">
+                            <img src="assets/images/services/service-v1-3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <h3><a href="#">Healthy Meals</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. </p>
+                        <div class="button">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Service Style1-->
+            <!--Start Single Service Style1-->
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="100ms" data-wow-duration="1500ms">
+                <div class="single-service-style1">
+                    <div class="img-holder">
+                        <div class="inner">
+                            <img src="assets/images/services/service-v1-4.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="text-holder">
+                        <h3><a href="#">Veterinary Service</a></h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. </p>
+                        <div class="button">
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Service Style1-->
+
+        </div>
+
+    </div>
+</section>
+<!-- End Service Style1 Area -->
+
+<!--Start Video Gallery Area-->
+<section dir="rtl" class="video-gallery-area">
+    <div class="container-fullwidth">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="video-gallery-content-box text-center">
+                    <img src="assets/images/resources/video-gallery-image.png" alt="">
+                    <h2>Get Every Pet<br> Food & Toods Here.</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+                    <div class="button">
+                        <a class="btn-one" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="txt">Shop Now</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div class="video-holder-box text-center" style="background-image: url(assets/images/resources/video-gallery-bg.jpg)">
+                    <div class="icon wow zoomIn" data-wow-delay="300ms" data-wow-duration="1500ms">
+                        <a class="video-popup thm-bgclr" title="Auto Repair Fastfix Video Gallery" href="https://www.youtube.com/watch?v=p25gICT63ek">
+                            <span class="icon-play-button"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--End Video Gallery Area-->
+
+<!--Start Team Area-->
+<section dir="rtl" class="team-area">
+    <div class="container">
+        <div class="sec-title text-center">
+            <div class="icon">
+                <i class="icon-bone"></i>
+            </div>
+            <h2>Our Groomers<span class="round-box zoominout"></span></h2>
+        </div>
+        <div class="row">
+            <!--Start Single Team Member-->
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="single-team-member wow animated fadeInUp" data-wow-delay="0.1s">
+                    <div class="img-holder">
+                        <div class="round-top"></div>
+                        <div class="round-bottom"></div>
+                        <div class="inner">
+                            <img src="assets/images/team/team-v1-1.png" alt="Awesome Image">
+                            <div class="overlay-style-one bg1"></div>
+                        </div>
+                    </div>
+                    <div class="title-holder text-center">
+                        <h5>Founder</h5>
+                        <h3><a href="#">Rosalina D. William</a></h3>
+                        <div class="team-social-link">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="linkedin" href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Team Member-->
+            <!--Start Single Team Member-->
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="single-team-member wow animated fadeInUp" data-wow-delay="0.3s">
+                    <div class="img-holder">
+                        <div class="round-top"></div>
+                        <div class="round-bottom"></div>
+                        <div class="inner">
+                            <img src="assets/images/team/team-v1-2.png" alt="Awesome Image">
+                            <div class="overlay-style-one bg2"></div>
+                        </div>
+                    </div>
+                    <div class="title-holder text-center">
+                        <h5>CEO</h5>
+                        <h3><a href="#">Miranda H. Halim</a></h3>
+                        <div class="team-social-link">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="linkedin" href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Team Member-->
+            <!--Start Single Team Member-->
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="single-team-member wow animated fadeInUp" data-wow-delay="0.5s">
+                    <div class="img-holder">
+                        <div class="round-top"></div>
+                        <div class="round-bottom"></div>
+                        <div class="inner">
+                            <img src="assets/images/team/team-v1-3.png" alt="Awesome Image">
+                            <div class="overlay-style-one bg2"></div>
+                        </div>
+                    </div>
+                    <div class="title-holder text-center">
+                        <h5>Groomer</h5>
+                        <h3><a href="#">Hilixer D. Browni</a></h3>
+                        <div class="team-social-link">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="linkedin" href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Team Member-->
+            <!--Start Single Team Member-->
+            <div class="col-xl-3 col-lg-6 col-md-6">
+                <div class="single-team-member wow animated fadeInUp" data-wow-delay="0.7s">
+                    <div class="img-holder">
+                        <div class="round-top"></div>
+                        <div class="round-bottom"></div>
+                        <div class="inner">
+                            <img src="assets/images/team/team-v1-4.png" alt="Awesome Image">
+                            <div class="overlay-style-one bg2"></div>
+                        </div>
+                    </div>
+                    <div class="title-holder text-center">
+                        <h5>Groomer</h5>
+                        <h3><a href="#">Yokolili Y. Yankee</a></h3>
+                        <div class="team-social-link">
+                            <ul>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                                <li>
+                                    <a class="linkedin" href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End Single Team Member-->
+        </div>
+    </div>
+</section>
+<!--End Team Area-->
+
+<!--Start Testimonial style1 Area-->
+<section class="testimonial-style1-area rtl">
+    <div class="image-box1"><img src="assets/images/testimonial/testimonial-image-1.png" alt=""></div>
+    <div class="image-box2"><img src="assets/images/testimonial/testimonial-image-2.png" alt=""></div>
+    <div class="image-box3 paroller"><img src="assets/images/testimonial/testimonial-image-3.png" alt=""></div>
+    <div class="image-box4 paroller"><img src="assets/images/testimonial/testimonial-image-4.png" alt=""></div>
+    <div class="layer-outer" style="background-image: url(assets/images/resources/map.png)"></div>
+    <div class="container">
+        <div dir="rtl" class="sec-title text-center">
+            <div class="icon">
+                <i class="icon-bone"></i>
+            </div>
+            <h2>Clients Feedback<span class="round-box zoominout"></span></h2>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="testimonial-carousel owl-carousel owl-theme text-right">
+                    <!--Start Single Testimonial Style1-->
+                    <div class="single-testimonial-style1  wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="text-holder">
+                            <h2>Miranda H. Halim</h2>
+                            <span>Founder, Miranda Family</span>
+                            <div class="text-box">
+                                <p>One thing is clear though: taking a proactive approach to collecting customer feedback ensures you never stray too far from the needs of your community, even as those needs evolve.</p>
                             </div>
                         </div>
-                    {% endfor %}
-                    {% if all_blogs|length > 3 %}
-                        <div class="col-md-12 text-center" style="margin-top: 5%; width: 100%">
-                            <a style="color: white" href="{% url 'blog_list' %}">
-                                <button style="width: 80%;" type="submit" name="submit" id="submitButton"
-                                        class="btn btn-lg contact_btn">
-                                    {% trans "See more ..." %}
-                                </button>
-                            </a>
+                        <div class="img-holder">
+                            <img src="assets/images/testimonial/tes-v1-1.png" alt="Awesome Image">
                         </div>
-                    {% endif %}
+                    </div>
+                    <!--End Single Testimonial Style1-->
+                    <!--Start Single Testimonial Style1-->
+                    <div class="single-testimonial-style1  wow fadeInUp" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="text-holder">
+                            <h2>Miranda H. Halim</h2>
+                            <span>Founder, Miranda Family</span>
+                            <div class="text-box">
+                                <p>One thing is clear though: taking a proactive approach to collecting customer feedback ensures you never stray too far from the needs of your community, even as those needs evolve.</p>
+                            </div>
+                        </div>
+                        <div class="img-holder">
+                            <img src="assets/images/testimonial/tes-v1-1.png" alt="Awesome Image">
+                        </div>
+                    </div>
+                    <!--End Single Testimonial Style1-->
+
                 </div>
-                <!-- / END ROW -->
             </div>
-            <!-- END CONTAINER  -->
-        </section>
-    {% endif %}
-    <!-- END BLOG -->
+        </div>
+    </div>
+</section>
+<!--End Testimonial Style1 Area-->
 
+<!--Start Blog Style1 Area-->
+<section class="blog-style1-area rtl">
+    <div class="container">
+        <div class="sec-title text-right">
+            <h5>//<span>Insights</span>//</h5>
+            <h2><span class="round-box zoominout"></span>News & Feeds</h2>
+        </div>
+        <div class="row text-right">
+            <div class="col-xl-12 col-lg-12">
+                <div class="blog-carousel owl-carousel owl-theme owl-nav-style-one">
+                    <!--Start Single blog Style1-->
+                    <div class="single-blog-style1 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="img-holder">
+                            <div class="date-box"><h5>24th June 2020</h5></div>
+                            <div class="inner">
+                                <img src="assets/images/blog/blog-v1-1.jpg" alt="Awesome Image">
+                            </div>
+                        </div>
+                        <div class="text-holder">
+                            <ul class="meta-info">
+                                <li><a href="#">By Admin</a><span class="icon-user"></span></li>
+                                <li><a href="#">Pet, Care, Medicine</a><span class="icon-tag"></span></li>
+                            </ul>
+                            <h3 class="blog-title"><a href="blog-single.html">Share five inspirational Quotes of the Day with friends<span class="round-box zoominout"></span></a></h3>
+                        </div>
+                    </div>
+                    <!--End Single blog Style1-->
+                    <!--Start Single blog Style1-->
+                    <div class="single-blog-style1 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="img-holder">
+                            <div class="date-box"><h5>24th June 2020</h5></div>
+                            <div class="inner">
+                                <img src="assets/images/blog/blog-v1-2.jpg" alt="Awesome Image">
+                            </div>
+                        </div>
+                        <div class="text-holder">
+                            <ul class="meta-info">
+                                <li><a href="#">By Admin</a><span class="icon-user"></span></li>
+                                <li><a href="#">Pet, Care, Medicine</a><span class="icon-tag"></span></li>
+                            </ul>
+                            <h3 class="blog-title"><a href="blog-single.html">Share five inspirational Quotes of the Day with friends<span class="round-box zoominout"></span></a></h3>
+                        </div>
+                    </div>
+                    <!--End Single blog Style1-->
+                    <!--Start Single blog Style1-->
+                    <div class="single-blog-style1 wow fadeInLeft" data-wow-delay="100ms" data-wow-duration="1500ms">
+                        <div class="img-holder">
+                            <div class="date-box"><h5>24th June 2020</h5></div>
+                            <div class="inner">
+                                <img src="assets/images/blog/blog-v1-3.jpg" alt="Awesome Image">
+                            </div>
+                        </div>
+                        <div class="text-holder">
+                            <ul class="meta-info">
+                                <li><a href="#">By Admin</a><span class="icon-user"></span></li>
+                                <li><a href="#">Pet, Care, Medicine</a><span class="icon-tag"></span></li>
+                            </ul>
+                            <h3 class="blog-title"><a href="blog-single.html">Share five inspirational Quotes of the Day with friends<span class="round-box zoominout"></span></a></h3>
+                        </div>
+                    </div>
+                    <!--End Single blog Style1-->
 
-    <!-- start js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.lang-btn').click(function (event) {
-                event.preventDefault();
-                var url = $(this).attr('href');
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: {
-                        csrfmiddlewaretoken: '{{ csrf_token }}'
-                    },
-                    success: function () {
-                        location.reload();
-                    }
-                });
-            });
-        });
-    </script>
-    <!-- end js -->
-
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Blog Style1 Area-->
 
 {% endblock content %}
